@@ -1,0 +1,4 @@
+interface:
+  display_name: "Designer"
+  short_description: "Executa fases UX mockadas"
+  default_prompt: "Use $designer para executar fases UX com telas e componentes mockados, validando visualmente comigo em ciclos curtos."

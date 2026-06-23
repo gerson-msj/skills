@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orquestrador"
+  short_description: "Coordena tarefas e fases do projeto"
+  default_prompt: "Use $orquestrador para conduzir uma solicitacao neste projeto."

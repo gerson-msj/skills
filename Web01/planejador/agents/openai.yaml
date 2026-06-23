@@ -1,0 +1,4 @@
+interface:
+  display_name: "Planejador"
+  short_description: "Planeja fases comuns e UX"
+  default_prompt: "Use $planejador para preparar ou revisar o plano de uma tarefa, incluindo fases UX iniciais quando solicitado."

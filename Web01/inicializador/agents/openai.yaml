@@ -1,0 +1,4 @@
+interface:
+  display_name: "Inicializador"
+  short_description: "Inicializa documentacao local navegavel e enxuta"
+  default_prompt: "Use $inicializador para estruturar a documentacao local deste projeto."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Criar Tarefa"
+  short_description: "Organiza ideias e registra tarefas"
+  default_prompt: "Use $criar-tarefa para conversar sobre uma mudanca desejada e registrar uma tarefa pronta para planejamento."

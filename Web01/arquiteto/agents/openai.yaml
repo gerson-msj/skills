@@ -1,0 +1,4 @@
+interface:
+  display_name: "Arquiteto"
+  short_description: "Avalia e mantem conhecimento permanente"
+  default_prompt: "Use $arquiteto para avaliar impactos no conhecimento permanente deste projeto."
