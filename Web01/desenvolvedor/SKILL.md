@@ -81,6 +81,10 @@ Para cada fase:
 - Executar as verificacoes e validacoes relevantes.
 - Corrigir falhas causadas pela implementacao.
 - Registrar bloqueios, desvios relevantes ou descobertas permanentes.
+- Registrar no resultado da fase se foi criado teste unitario durante o
+  desenvolvimento; se foi, informar o motivo pontual, o arquivo criado ou
+  alterado, e confirmar que foi removido apos o uso ou que ha autorizacao
+  explicita para mante-lo.
 - Quando a fase confirmar, substituir ou consumir artefato temporario de fase UX,
   registrar o resultado no arquivo da fase atual e, se necessario para fases
   futuras, resumir em `tarefa.md`; nao alterar o arquivo da fase UX anterior
@@ -107,7 +111,10 @@ Confirmar antes de submeter cada fase para validacao do usuario:
 
 - criterios da fase atendidos;
 - verificacoes executadas e resultados registrados de forma curta;
-- nenhum teste unitario temporario permanece na entrega sem autorizacao explicita;
+- uso de teste unitario temporario declarado no resultado da fase, mesmo quando
+  nenhum teste foi criado;
+- nenhum teste unitario temporario permanece na entrega sem autorizacao
+  explicita registrada;
 - nenhuma alteracao fora do escopo;
 - alteracoes preexistentes preservadas.
 
@@ -117,6 +124,9 @@ Registrar no arquivo da fase:
 ## Resultado
 - Resultado entregue.
 - Verificacoes realizadas.
+- Testes unitarios temporarios: nao criados; ou criado `<arquivo>` para
+  `<motivo pontual>` e removido apos o uso; ou mantido por autorizacao explicita
+  de `<usuario/data>`.
 - Riscos, limitacoes ou pendencias.
 ```
 
@@ -278,6 +288,8 @@ Informar de forma curta:
 
 - tarefa e fases executadas;
 - resultado e verificacoes;
+- testes unitarios temporarios criados, motivo e confirmacao de remocao, ou
+  informar que nenhum foi criado;
 - commits criados ou, quando ainda nao aprovados, informar que aguardam validacao
   do usuario;
 - status da validacao dos fontes e do projeto;
