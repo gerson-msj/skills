@@ -59,10 +59,10 @@ dependencias e escopo rastreaveis.
   indispensavel para produzir um plano realista.
 
 Se objetivo, resultado ou escopo estiverem ambiguos ou contraditorios, interromper
-o planejamento e devolver a lacuna para a skill `criar-tarefa`.
+o planejamento e registrar a lacuna.
 
-Quando surgir decisao arquitetural nao resolvida, usar `arquiteto` no modo
-`Avaliar`. Nao consolidar conhecimento permanente.
+Quando surgir decisao arquitetural nao resolvida, registrar a pendencia. Nao
+consolidar conhecimento permanente.
 
 ### 2. Definir a estrategia
 
@@ -89,7 +89,13 @@ expectativa de forma clara, definir uma estrategia propria para essas fases:
 - validar visualmente e interativamente com o usuario durante a execucao;
 - deixar persistencia, regras de dominio e integracoes reais fora das fases UX;
 - fazer as fases comuns posteriores dependerem das fases UX que entregam a base
-  visual mockada.
+  visual mockada;
+- orientar fases UX a criar artefatos reutilizaveis ja com nome, caminho e
+  estrutura esperados para o recurso final, isolando mocks em blocos ou
+  adaptadores removiveis;
+- definir nas fases comuns dependentes que a implementacao real deve preservar o
+  comportamento visual/interativo validado e remover ou substituir mocks cobertos
+  pela entrega real.
 
 ### 3. Dividir em fases
 
@@ -122,11 +128,10 @@ dela.
 
 Quando o contrato da tarefa estiver claro, registrar o plano diretamente sem
 pedir confirmacao previa ao usuario. Em seguida, apresentar somente um resumo
-curto com os titulos das fases criadas e perguntar se o usuario quer commitar os
-artefatos criados e iniciar o desenvolvimento.
+curto com os titulos das fases criadas.
 
-Nao iniciar desenvolvimento nem criar commit sem confirmacao explicita apos o
-registro das fases. Se o usuario quiser revisar os arquivos ou pedir alteracoes,
+Nao iniciar desenvolvimento sem confirmacao explicita apos o registro das fases.
+Se o usuario quiser revisar os arquivos ou pedir alteracoes,
 parar depois de apresentar os titulos das fases e aguardar novo comando.
 
 Pedir confirmacao antes de registrar apenas quando houver ambiguidade,
@@ -145,7 +150,6 @@ Atualizar `tarefa.md` com o plano resumido e o painel de acompanhamento:
 ## Plano
 
 **Revisao:** 1
-**Proxima acao:** Aguardar confirmacao para desenvolver fases
 
 ### Estrategia
 Abordagem geral em poucas linhas.
@@ -226,7 +230,12 @@ interacoes principais.
 
 Fases comuns que consumirem a tela ou componente mockado devem declarar a fase UX
 como dependencia real e ter `Tipo de fase: Comum` ou omitir o campo quando nao
-houver risco de confusao.
+houver risco de confusao. Seus criterios devem indicar que o comportamento
+visual/interativo validado na fase UX deve ser preservado e que mocks cobertos
+pela implementacao real devem ser removidos ou substituidos. Quando a fase UX
+entregar artefato reutilizavel, os criterios da fase comum devem preferir editar
+o mesmo arquivo, componente ou rota validado, evitando recriar o recurso em outro
+nome apenas para separar mock de implementacao real.
 
 Usar identificadores sequenciais `F01`, `F02`, `F03`. Nunca reutilizar, renumerar
 ou preencher lacunas. Registrar fases como `Planejada` ate o desenvolvimento.
@@ -244,8 +253,8 @@ Regras para arquivos de fase:
 - quando usar `Cuidados de implementacao`, limitar a restricoes, integracoes
   sensiveis ou decisoes confirmadas; nao transformar em checklist de arquivos,
   funcoes, classes ou passos de implementacao;
-- manter em `tarefa.md` somente estrategia, revisao, proxima acao e tabela de
-  controle com estado, dependencia, resumo e link, salvo orientacoes
+- manter em `tarefa.md` somente estrategia, revisao e tabela de controle com
+  estado, dependencia, resumo e link, salvo orientacoes
   compartilhadas indispensaveis para fases futuras;
 - manter os estados sincronizados entre a tabela de controle e o arquivo da
   fase.
@@ -274,7 +283,7 @@ Ao revisar:
 - nao renumerar fases existentes;
 - marcar fases inviaveis como `Cancelada` ou `Substituida`;
 - adicionar novas fases ao final da numeracao;
-- reavaliar dependencias e a proxima acao.
+- reavaliar dependencias.
 
 Se a revisao alterar objetivo, escopo ou expectativas de aceite, obter confirmacao
 do usuario e atualizar primeiro o contrato da tarefa. Nao criar uma nova tarefa
@@ -290,16 +299,12 @@ Preparar o desenvolvimento somente quando:
 - contexto e criterios estiverem suficientes;
 - fases com dependencias anteriores estiverem ordenadas corretamente.
 
-Antes de iniciar desenvolvimento, perguntar se o usuario quer commitar os
-artefatos de planejamento criados. Se o usuario confirmar, orientar ou executar o
-commit conforme o papel ativo permitir; depois disso, iniciar desenvolvimento
-somente se o usuario tambem tiver confirmado essa acao. Informar que o
-desenvolvimento seguira fase por fase, com um commit para cada fase concluida.
-Informar que fases UX devem seguir com a skill `designer` e fases comuns com a
-skill `desenvolvedor`, respeitando as dependencias.
+Antes de iniciar desenvolvimento, confirmar que o usuario aprovou as fases.
+Confirmar que fases UX e fases comuns estao identificadas, respeitando as
+dependencias.
 
-Se todas as fases estiverem concluidas, orientar o encerramento com
-`desenvolvedor`. Usar `arquiteto` quando houver consolidacao permanente a fazer.
+Se todas as fases estiverem concluidas, registrar esse estado no retorno. Nao
+decidir a transicao seguinte.
 
 ### 9. Verificar
 
@@ -314,7 +319,6 @@ Se todas as fases estiverem concluidas, orientar o encerramento com
   `tarefa.md`.
 - Confirmar que estados da tabela de controle e dos arquivos de fase estao
   sincronizados.
-- Confirmar que nao ha commit de fase pendente antes de novas fases.
 - Confirmar que nenhum codigo ou conhecimento permanente foi alterado.
 
 ## Retorno
@@ -323,29 +327,7 @@ Informar de forma curta:
 
 - tarefa e revisao do plano;
 - titulos das fases registradas;
-- decisoes, riscos ou bloqueios pendentes;
-- pergunta explicita sobre commitar os artefatos criados e iniciar as fases,
-  indicando `designer` para fases UX iniciais ou `desenvolvedor` para fases
-  comuns quando nao houver fase UX pendente.
-
-## Proxima acao sugerida
-
-Ao finalizar qualquer uso da skill, encerrar o retorno com `Proxima acao sugerida:`.
-A sugestao deve:
-
-- indicar uma unica proxima acao concreta quando houver caminho preferencial;
-- mencionar o responsavel, skill ou papel e o objeto da acao, como desenvolver
-  fases, validar o projeto, registrar novas fases, consolidar ou criar
-  commit final ou push;
-- informar a condicao ou aprovacao necessaria quando a proxima acao depender do
-  usuario ou de outro estado;
-- quando houver mais de uma opcao real, listar no maximo duas e destacar a
-  recomendada;
-- dizer explicitamente quando nao houver proxima acao segura ou quando o fluxo
-  estiver bloqueado.
-
-Nao sugerir passos fora do fluxo, nao assumir aprovacoes e nao iniciar a
-proxima etapa apenas por ter sugerido a acao.
+- decisoes, riscos ou bloqueios pendentes.
 
 ## Limites
 

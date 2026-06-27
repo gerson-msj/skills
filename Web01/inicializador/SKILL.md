@@ -99,25 +99,6 @@ arquivo detalhado deve comecar com resumo e ser alcancavel a partir de `AGENTS.m
 - Confirmar que nenhum trabalho foi criado ou planejado.
 - Apresentar ao usuario a estrutura criada e as lacunas que ainda precisam de
   resposta.
-
-## Proxima acao sugerida
-
-Ao finalizar qualquer uso da skill, encerrar o retorno com `Proxima acao sugerida:`.
-A sugestao deve:
-
-- indicar uma unica proxima acao concreta quando houver caminho preferencial;
-- mencionar o responsavel, skill ou papel e o objeto da acao, como criar fases,
-  desenvolver fases, validar o projeto, registrar novas fases, consolidar,
-  fechar trabalho ou fazer push;
-- informar a condicao ou aprovacao necessaria quando a proxima acao depender do
-  usuario ou de outro estado;
-- quando houver mais de uma opcao real, listar no maximo duas e destacar a
-  recomendada;
-- dizer explicitamente quando nao houver proxima acao segura ou quando o fluxo
-  estiver bloqueado.
-
-Nao sugerir passos fora do fluxo, nao assumir aprovacoes e nao iniciar a
-proxima etapa apenas por ter sugerido a acao.
 ## Regra fundamental
 
 Nunca ler recursivamente toda a documentacao como procedimento padrao. Ler

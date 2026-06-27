@@ -137,25 +137,6 @@ Responder de forma curta e previsivel:
 No modo `Consolidar`, mencionar os arquivos alterados. Nao narrar leituras ou
 detalhes operacionais desnecessarios.
 
-## Proxima acao sugerida
-
-Ao finalizar qualquer uso da skill, encerrar o retorno com `Proxima acao sugerida:`.
-A sugestao deve:
-
-- indicar uma unica proxima acao concreta quando houver caminho preferencial;
-- mencionar o responsavel, skill ou papel e o objeto da acao, como criar fases,
-  desenvolver fases, validar o projeto, registrar novas fases, consolidar,
-  fechar trabalho ou fazer push;
-- informar a condicao ou aprovacao necessaria quando a proxima acao depender do
-  usuario ou de outro estado;
-- quando houver mais de uma opcao real, listar no maximo duas e destacar a
-  recomendada;
-- dizer explicitamente quando nao houver proxima acao segura ou quando o fluxo
-  estiver bloqueado.
-
-Nao sugerir passos fora do fluxo, nao assumir aprovacoes e nao iniciar a
-proxima etapa apenas por ter sugerido a acao.
-
 ## Limites
 
 - Nao criar, decompor, priorizar ou concluir trabalhos.

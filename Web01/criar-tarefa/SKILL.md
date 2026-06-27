@@ -54,9 +54,9 @@ Classificar a tarefa como:
 - Identificar visao, dominios, recursos e decisoes relevantes.
 - Nao inspecionar codigo-fonte por padrao.
 
-Quando houver possivel impacto permanente, usar a skill global `arquiteto` no modo
-`Avaliar`. Incorporar apenas seu retorno resumido a tarefa. Nao solicitar
-consolidacao, pois uma proposta ainda nao representa o estado atual do sistema.
+Quando houver possivel impacto permanente, registrar a avaliacao arquitetural
+como `Incerta` ou descrever a pendencia. Nao consolidar conhecimento, pois uma
+proposta ainda nao representa o estado atual do sistema.
 
 ### 3. Ajudar a lapidar a tarefa
 
@@ -187,23 +187,13 @@ Aguardando encerramento.
 
 ### Fonte da verdade
 Aguardando encerramento.
-
-### Regras de negocio implementadas
-Aguardando encerramento.
-
-### Decisoes tecnicas importantes
-Aguardando encerramento.
-
-### Limites conhecidos
-Aguardando encerramento.
 ```
 
 Adaptar secoes ao contexto, mas nao adicionar plano detalhado, fases ou validacao
 da implementacao. A secao `Controle de fases` deve existir como
 painel de acompanhamento e sera preenchida pelo Planejador. A secao `Resumo final
 da tarefa` deve existir como marcador para uma sintese historica curta apos a
-conclusao, incluindo fonte da verdade, regras de negocio implementadas, decisoes
-tecnicas importantes e limites conhecidos.
+conclusao.
 
 O estado geral da tarefa seguira este ciclo nas skills posteriores:
 
@@ -234,25 +224,6 @@ Informar de forma curta:
 - identificador, titulo e estado;
 - decisoes pendentes;
 - se esta pronto para a criacao das fases ou qual lacuna impede o planejamento.
-
-## Proxima acao sugerida
-
-Ao finalizar qualquer uso da skill, encerrar o retorno com `Proxima acao sugerida:`.
-A sugestao deve:
-
-- indicar uma unica proxima acao concreta quando houver caminho preferencial;
-- mencionar o responsavel, skill ou papel e o objeto da acao, como planejar fases,
-  desenvolver fases, validar o projeto, consolidar, criar commit final ou fazer
-  push;
-- informar a condicao ou aprovacao necessaria quando a proxima acao depender do
-  usuario ou de outro estado;
-- quando houver mais de uma opcao real, listar no maximo duas e destacar a
-  recomendada;
-- dizer explicitamente quando nao houver proxima acao segura ou quando o fluxo
-  estiver bloqueado.
-
-Nao sugerir passos fora do fluxo, nao assumir aprovacoes e nao iniciar a
-proxima etapa apenas por ter sugerido a acao.
 
 ## Limites
 

@@ -23,8 +23,8 @@ Use o Web01 quando quiser que o modelo ajude a:
 
 ## Guia rapido
 
-Para o uso cotidiano, chame o `orquestrador`. Ele classifica a intencao e aciona
-as demais skills quando necessario.
+Para o uso cotidiano, chame o `orquestrador`. Ele classifica a intencao, aciona
+as demais skills quando necessario e centraliza a proxima acao.
 
 Fluxo comum:
 
@@ -35,8 +35,11 @@ Fluxo comum:
    navegaveis e verificaveis.
 4. Depois da aprovacao das fases, `designer` executa fases UX e
    `desenvolvedor` executa fases comuns, respeitando dependencias.
-5. Ao final das fases, `desenvolvedor` prepara o encerramento da tarefa.
-6. Quando houver conhecimento permanente a consolidar, `arquiteto` atualiza os
+5. Nas fases comuns, `desenvolvedor` usa a interface mockada validada como base,
+   integra dados, regras e persistencia reais, e remove mocks cobertos pela
+   implementacao final.
+6. Ao final das fases, `desenvolvedor` prepara o encerramento da tarefa.
+7. Quando houver conhecimento permanente a consolidar, `arquiteto` atualiza os
    documentos permanentes.
 
 Estados principais de uma tarefa:
@@ -108,6 +111,12 @@ Use quando:
 Executa fases UX aprovadas. Cria ou altera telas, fluxos visuais, componentes e
 handlers mockados para validar experiencia com o usuario.
 
+Usa Heuristicas de Nielsen e Atomic Design como referencias para decisoes de UX
+e componentes, aplicando com proporcionalidade.
+
+Quando o artefato deve virar real depois, cria a tela ou componente ja com o
+nome, caminho e estrutura finais, deixando o mock isolado em blocos removiveis.
+
 Nao implementa backend real, persistencia, regras de dominio, autenticacao real
 ou integracoes externas. A validacao principal e visual/interativa.
 
@@ -121,7 +130,20 @@ Use quando:
 
 Executa fases comuns aprovadas, uma por vez, lendo apenas o contexto necessario.
 Implementa o menor resultado coerente, verifica o comportamento e aguarda
-validacao explicita do usuario antes de criar commit.
+validacao explicita do usuario antes de criar o commit final.
+
+Aplica principios SOLID e padroes de dominio com proporcionalidade, evitando
+camadas ou abstracoes desnecessarias quando codigo direto resolver melhor o
+problema.
+
+Por padrao, verifica com comandos, build e inspecao pontual.
+Nao sobe servidor ou navegador apenas para validacao do usuario; informa como o
+usuario pode validar localmente quando necessario.
+
+Quando uma fase comum depende de uma fase UX, usa a tela ou componente mockado
+validado como base, edita preferencialmente o mesmo arquivo validado, integra a
+implementacao real e remove mocks que tenham sido substituidos pelo
+comportamento funcional.
 
 Tambem conduz o encerramento da tarefa depois que todas as fases foram
 concluidas, preparando o resumo final, solicitando consolidacao arquitetural
@@ -170,17 +192,19 @@ Use quando:
 | `criar-tarefa` | Conversar, lapidar e registrar tarefa proposta |
 | `planejador` | Dividir tarefa aprovada em fases verificaveis |
 | `designer` | Executar fases UX com mocks e validacao visual |
-| `desenvolvedor` | Executar fases comuns, verificar e commitar apos aprovacao |
+| `desenvolvedor` | Executar fases comuns, verificar e criar commit final apos aprovacao |
 | `arquiteto` | Avaliar e consolidar conhecimento permanente |
 | `inicializador` | Criar ou reorganizar documentacao minima do projeto |
 
 ## Cuidados de uso
 
 - Comece pelo `orquestrador` quando nao souber qual skill usar.
-- Use uma skill especializada diretamente quando o papel ja estiver claro.
+- Acione skills especializadas diretamente somente para manutencao ou revisao da
+  propria skill; no fluxo de projeto, deixe o `orquestrador` conduzir as
+  transicoes.
 - Nao pule aprovacoes: proposta, fases, validacao de fontes, validacao UX e
   fechamento existem para manter rastreabilidade.
 - Fases UX pertencem ao `designer`; fases comuns pertencem ao `desenvolvedor`.
 - Mudancas permanentes de conhecimento devem passar pelo `arquiteto`.
 - Commits so devem acontecer apos aprovacao explicita do usuario, conforme o
-  fluxo da fase ou do fechamento.
+  fluxo de fechamento.

@@ -99,9 +99,9 @@ Respeitar as responsabilidades:
 - `planejador`: planeja, revisa e registra novas fases, mantendo controle na tarefa e
   detalhe em arquivos de fase; o registro do plano nao substitui o aceite do
   usuario para iniciar desenvolvimento.
-- `desenvolvedor`: implementa fases em sequencia, cria um commit por fase,
-  prepara encerramento, cria o commit final e faz push quando possivel; pode
-  implementar front em fases comuns e integrar resultados de fases UX.
+- `desenvolvedor`: implementa fases comuns em sequencia, prepara encerramento,
+  cria o commit final e faz push quando possivel; pode implementar front em
+  fases comuns e integrar resultados de fases UX.
 - `designer`: executa fases UX em ciclos assistidos, cria telas e componentes
   mockados, valida visualmente com o usuario e nao implementa backend real ou
   integracoes reais.
@@ -145,6 +145,10 @@ Depois de cada skill:
 
 Nao saltar estados para acelerar. Nao repetir tarefa ja registrada.
 
+Centralizar a proxima acao no Orquestrador. Skills especializadas devem retornar
+apenas o resultado do proprio papel; o Orquestrador decide e comunica a
+transicao seguinte.
+
 ## Encaminhar Retornos E Bloqueios
 
 - objetivo, resultado ou escopo ambiguo: `criar-tarefa`;
@@ -183,7 +187,7 @@ Evitar expor detalhes internos das skills quando nao ajudarem o usuario a decidi
 - Confirmar que nenhuma conversa foi convertida em tarefa sem intencao explicita.
 - Confirmar que a skill correta foi usada para cada transicao.
 - Confirmar que nenhuma aprovacao obrigatoria foi presumida.
-- Confirmar que estados, documentos e source control permanecem coerentes.
+- Confirmar que estados e documentos permanecem coerentes.
 - Confirmar que somente o contexto necessario foi carregado.
 - Confirmar que perguntas sobre comportamento implementado foram respondidas a
   partir de resumos finais quando eles existiam e eram suficientes.

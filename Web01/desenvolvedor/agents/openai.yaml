@@ -1,4 +1,4 @@
 interface:
   display_name: "Desenvolvedor"
   short_description: "Implementa fases comuns para validacao"
-  default_prompt: "Use $desenvolvedor para executar fases comuns aprovadas, deixar os fontes prontos para validacao e commitar somente apos aprovacao."
+  default_prompt: "Use $desenvolvedor para executar fases comuns aprovadas, deixar os fontes prontos para validacao e criar commit final somente apos aprovacao."
